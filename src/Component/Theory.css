@@ -1,0 +1,29 @@
+ 
+ .h1{
+    color: rgb(118, 10, 10);
+    text-align: center;
+    text-decoration:underline;
+}
+.h2{
+    color: rgb(81, 10, 111);
+    text-decoration: dotted55;
+ }
+ .p{
+    color: rgb(14, 14, 14);
+ }
+ .h3{
+    color: rgb(13, 70, 43);
+ }
+ .ol{
+    color: rgb(104, 17, 72);
+ }
+ /* .dom{
+    background-image: url("picofdom.jpg");
+    
+ }
+ .his{
+    background-image: url("ReactJS-History-1024x576.png");
+ }
+ .vd{
+    background-image: url("0__C52yYMRTDuMtdBA.png");
+ } */

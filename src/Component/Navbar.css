@@ -1,17 +1,7 @@
-
-*{
-    background-color: beige;
-    padding: 0;
-  }
-
-.main{
-    height:1000px;
-    width:100%;
-  
-
-}
+ 
 .nav{
         border: 1px solid rgb(135, 151, 167);
+        background-image: url("pexels-photo-388415.jpg");
        height: 30px;
        width: 100%;
      padding: 20px;
@@ -19,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-     font-size:17px ;
+     font-size:17px ; 
   }
 
  .tex>a{

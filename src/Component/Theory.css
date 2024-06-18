@@ -1,4 +1,27 @@
- 
+ body{
+  background-color: rgb(185, 229, 229);
+ }
+ .dom{
+   margin-top: 120px;
+   position: absolute;
+  }
+ .his{
+   margin-top: 120px;
+   position: absolute;
+ }
+.cl {
+   margin-top: 120px;
+   position: absolute;
+}
+.vd {
+   margin-top: 120px;
+   position: absolute;
+}
+.com{
+   margin-top: 120px;
+   position: absolute;
+}
+
  .h1{
     color: rgb(118, 10, 10);
     text-align: center;

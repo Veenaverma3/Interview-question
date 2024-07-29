@@ -12,8 +12,7 @@ export const Navside = () => {
   return (
     <>
       <div className="w-[20%] relative text-2xl text-white p-5 space-y-2">
-        <h1>welcom to react app</h1>
-        {data.map((item, index) => (
+         {data.map((item, index) => (
           <div key={index} className="w-full">
             <button 
               onClick={() => handleClick(item.id)} 

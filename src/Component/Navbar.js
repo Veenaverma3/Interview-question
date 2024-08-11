@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(prev => !prev);
 
   return (
     <>
@@ -32,13 +32,14 @@ export const Navbar = () => {
           <button
             className="md:hidden text-2xl"
             onClick={toggleMenu}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             {isOpen ? '✖' : '☰'}
           </button>
 
           {/* Mobile Menu */}
-          <div className={`md:hidden fixed top-0 left-0 w-full bg-gradient-to-r from-purple-900 via-purple-700 to-purple-900 text-white p-4 transition-transform ${isOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}`}>
-            <div className="flex flex-col space-y-4 font-bold text-lg">
+          <div className={`md:hidden fixed top-0 right-0 w-50%  border-2 bg-gradient-to-r from-purple-900 via-purple-700 to-purple-900 text-white p-4 transition-transform duration-300 ease-in-out`}>
+            <div className="flex flex-col space-y-3 font-bold text-lg">
               <Link to="/his" className="hover:underline" onClick={toggleMenu}>History</Link>
               <Link to="/dom" className="hover:underline" onClick={toggleMenu}>Dom</Link>
               <Link to="/vdom" className="hover:underline" onClick={toggleMenu}>Vdom</Link>

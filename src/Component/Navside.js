@@ -1,50 +1,67 @@
-import React, { useState } from 'react';
-import Ques from './Allques';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'; 
+ import {  atelierForestDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+ const QuestionsList = () => {
+    const [questions, setQuestions] = useState([]);
+    const [visibleIndex, setVisibleIndex] = useState(null); // Track which question is visible
 
-export const Navside = () => {
-  const [data, setData] = useState(Ques);
-  const [selectedQues, setSelectedQues] = useState(null);
+    useEffect(() => {
+        const fetchQuestions = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/data');
+                console.log("fetched data", response.data);
+                setQuestions(response.data.Quest);
+            } catch (err) {
+                console.error("error", err);
+            }
+        };
 
-  const handleClick = (id) => {
-    setSelectedQues(id === selectedQues ? null : id);
-  };
+        fetchQuestions();
+    }, []);
 
-  return (
-    <>
-      <div className="w-[20%] relative text-2xl text-white p-5 space-y-2">
-         {data.map((item, index) => (
-          <div key={index} className="w-full">
-            <button 
-              onClick={() => handleClick(item.id)} 
-              className="w-[200px] text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
-              <p className='text-center'>{item.id} Question</p>
-            </button>
-          </div>
-        ))}
-      </div>
-      {selectedQues !== null && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-          <div className="m-7 p-4 text-white   w-[500px] rounded-md bg-gradient-to-r from-slate-900 to-slate-700">
-            {data.map((item, index) => (
-              item.id === selectedQues && (
-                <div key={item.id}>
-                  <h1 className="text-2xl mb-7 text-orange-500">{item.id}. {item.Ques}</h1>
-                  <p className="mb-0 text-justify">
-                    <span className='text-2xl text-green-600'>Ans :</span> {item.Ans}
-                  </p>
-                  <button 
-                    onClick={() => handleClick(null)} 
-                    className="items-center m-auto mt-7 p-3 bg-red-500 rounded text-white w-28"
-                  >
-                    Close
-                  </button>
-                </div>
-              )
-            ))}
-          </div>
+    const toggleVisibility = (index) => { 
+        setVisibleIndex(visibleIndex === index ? null : index);
+    };
+
+    return (
+        <div className="p-6 bg-gradient-to-r  min-h-screen">
+            <h1 className="text-4xl font-extrabold text-black text-center mb-6">Interview Questions</h1>
+            <div className="space-y-7">
+                {questions.length === 0 ? (
+                    <p className="text-white text-lg text-center">Loading...</p>
+                ) : (
+                    questions.map((question, index) => (
+                        <div
+                            key={index}
+                            className={`p-4 rounded-md shadow-lg cursor-pointer w-1/2 m-auto border-2 border-gray-800 shadow-gray-900 ${visibleIndex === index ? 'bg-red-200' : 'bg-fuchsia-300'}`}
+                            onClick={() => toggleVisibility(index)}
+                        >
+                            <h2
+                                className={`text-xl font-semibold ${visibleIndex === index ? 'text-black text-bold' : 'text-gray-800'}`}
+                            >
+                                Question: {question.Ques}
+                            </h2>
+                            {visibleIndex === index && (
+                                <p className="text-lg mt-2 text-gray-700">
+                                    Answer: {question.Ans}
+                                </p>
+)}                                  
+                                        {/* example */}
+                                   {visibleIndex === index && question.ex && (
+                                <div className="mt-2">
+                                    <p className="text-lg ">Example:</p>
+                                    <SyntaxHighlighter language="javascript" style={atelierForestDark}>
+                                        {question.ex}
+                                    </SyntaxHighlighter>
+                                </div>
+                            )}
+                        </div>
+                    ))
+                )}
+            </div>
         </div>
-      )}
-    </>
-  );
+    );
 };
+
+export default QuestionsList;

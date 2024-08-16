@@ -1,18 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
   
   import { Navbar } from "./Component/Navbar";
-import { Navside } from "./Component/Navside";
+ import QuestionsList from "./Component/Navside";
+import Signup from "./Component/Signup";
+import ResetPassword from "./Component/Login"; 
+import Add from "./Component/Add";
+// import Navques from "./Component/Navques";
+// import { Navside } from "./Component/Navside";
  
      
 function App(){
   return (
-    <div className="App bg-gradient-to-r from-pink-500 via-red-500 to-purple-500 min-h-screen">           <Router>
-         
-         <Navbar/>  
-         <Navside/>
-  
+    <div className="App bg-gradient-to-r from-blue-200 to-cyan-200 min-h-screen">    
+           <Router>
+           <Navbar/> 
+  {/* <QuestionsList/> */}
          <Routes>
-         </Routes>
+          <Route path="/ques" element={<QuestionsList/>}/>
+          <Route path="/sign" element={<Signup/>}/>
+          <Route path="/log" element={<ResetPassword/>}/>
+          <Route path="/add" element={<Add/>}/>
+           </Routes>
       </Router> 
         
     </div>

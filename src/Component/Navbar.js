@@ -29,17 +29,17 @@ export const Navbar = () => {
       {/* Mobile Menu Button */}
       <button
         className="md:hidden text-2xl"
-        onClick={toggleMenu}
+        onClick={toggleMenu} 
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
       >
         {isOpen ? '✖' : '☰'}
       </button>
   
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed top-0 right-0 w-3/4 max-w-sm bg-gradient-to-r from-indigo-900 via-indigo-700 to-indigo-900 text-white p-4 transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex flex-col space-y-6 font-semibold text-lg">
-          <Link to="/log" className="hover:text-yellow-300 transition-colors duration-300" onClick={toggleMenu}>Home</Link>
-          <Link to="/sign" className="hover:text-yellow-300 transition-colors duration-300" onClick={toggleMenu}>Signup</Link>
+      <div className={`md:hidden fixed top-0 right-0   max-w-sm bg-gradient-to-r from-indigo-900 via-indigo-700 to-indigo-900 text-white p-4 transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className=" grid grid-rows-3 space-y-3    font-semibold text-lg">
+          {/* <Link to="/log" className="hover:text-yellow-300 transition-colors duration-300" onClick={toggleMenu}>Home</Link> */}
+          <Link to="/sign" className="hover:text-yellow-300 transition-colors  duration-300" onClick={toggleMenu}>Signup</Link>
           <Link to="/add" className="hover:text-yellow-300 transition-colors duration-300" onClick={toggleMenu}>Add</Link>
           <Link to="/ques" className="hover:text-yellow-300 transition-colors duration-300" onClick={toggleMenu}>Interview Questions</Link>
         </div>

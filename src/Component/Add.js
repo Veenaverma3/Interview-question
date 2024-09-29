@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'; // Import toast and ToastContainer
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS for styling
+import { url } from './url';
  
 const Add = () => {
   const [questionData, setQuestionData] = useState({
     Ques: '',
     Ans: '',
-    ex: '', // New state for code example
+    ex: '' // New state for code example
   });
 
   const handleChange = (e) => {
@@ -21,7 +22,7 @@ const Add = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/add", questionData);
+      const response = await axios.post(`${url}/add`, questionData);
         console.log("response added ",response)
         toast.success(response.data.message)
     } catch (err) {

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'; // Import toast and ToastContainer
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS for styling
+import { url } from './url';
  
 
 const Signup = () => {
@@ -26,7 +27,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/", formData);
+      const response = await axios.post(`${url}/`, formData);
       console.log(response.data.message);
        // Ensure the endpoint matches your backend
           toast.success('User registered successfully!');

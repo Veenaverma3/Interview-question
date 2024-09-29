@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'; // Import toast and ToastContainer
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS for styling
+import { url } from './url';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,10 +26,11 @@ const Login = () => {
     e.preventDefault();
     try {
       // Send login request to the backend server
-      const response = await axios.post("http://localhost:4000/login", formData); // Ensure the endpoint matches your backend
+      const response = await axios.post(`${url}/login`, formData); // Ensure the endpoint matches your backend
       console.log(response.data.message);
 
       // Show success toast notification
+
       toast.success('Login successful!');
 
       //redirect to add page 

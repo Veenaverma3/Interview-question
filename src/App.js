@@ -5,9 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./Component/Signup";
 import ResetPassword from "./Component/Login"; 
 import Add from "./Component/Add";
-// import Navques from "./Component/Navques";
-// import { Navside } from "./Component/Navside";
- 
+  
      
 function App(){
   return (
@@ -15,7 +13,7 @@ function App(){
            <Router>
            <Navbar/> 
   {/* <QuestionsList/> */}
-         <Routes>
+          <Routes>
           <Route path="/ques" element={<QuestionsList/>}/>
           <Route path="/sign" element={<Signup/>}/>
           <Route path="/log" element={<ResetPassword/>}/>
